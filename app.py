@@ -1,8 +1,25 @@
 import streamlit as st
 import random
+from streamlit_js_eval import streamlit_js_eval
+
+
+#reading existing value from browser
+saved_pw = streamlit_js_eval(js_expressions="localStorage.getItem('passwords')")
 
 #st.login()
 Users=["Márk","Mama","Henrik","Richard","Gábor","Susu"]
+
+
+# If nothing saved yet, use an empty list
+if saved_pw is None or saved_pw == "null":
+    saved_pw_list = []
+else:
+    import json
+    saved_pw_list = json.loads(saved_pw)
+
+st.write("Mentett jelszavak:", saved_pw_list)
+
+
 numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
 u_letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
@@ -64,6 +81,9 @@ else:
     if ok_clicked:
         with open("jelszavak.txt", "a", encoding="UTF-8") as f:
             f.write(str("\n") + usege + str(":\n\t") + st.session_state.password)
+        saved_pw_list.append(st.session_state.password)
+        streamlit_js_eval(
+            js_expressions=f"localStorage.setItem('passwords', '{saved_pw_list}')")
         st.success("☑️ Jelszó elmentve!")
 
 
