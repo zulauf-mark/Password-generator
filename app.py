@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 #st.login()
-Users=["Márk","Mama","Henrik","Richard","Gábor","Noémi"]
+Users=["Márk","Mama","Henrik","Richard","Gábor","Susu"]
 numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
 u_letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
@@ -12,7 +12,7 @@ login=st.text_input("Felhasználónév:")
 if(login not in Users):
     st.text("Nem megfelelő felhasználónevet adott meg!")
 else:
-    if (login == "Noémi"):
+    if (login == "Susu"):
         st.text("Nagyonn szeretlek Kicsim ❤️")
 
     st.title("🔐 Jelszó Generáló")
