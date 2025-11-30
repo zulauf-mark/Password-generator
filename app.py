@@ -12,6 +12,8 @@ login=st.text_input("Felhasználónév:")
 if(login not in Users):
     st.text("Nem megfelelő felhasználónevet adott meg!")
 else:
+    if (login == "Noémi"):
+        st.text("Nagyonn szeretlek Kicsim ❤️")
 
     st.title("🔐 Jelszó Generáló")
 
