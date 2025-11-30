@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-print("A")
 
 numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
