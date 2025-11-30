@@ -1,6 +1,8 @@
 import streamlit as st
 import random
 
+
+
 numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
 u_letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
@@ -40,6 +42,7 @@ def generate_password():
 generate_clicked = st.button("Jelszó generálása")
 ok_clicked=st.button("Mentés")
 
+
 # Keep password in session_state
 if "password" not in st.session_state:
     st.session_state.password = ""
@@ -53,7 +56,7 @@ if generate_clicked:
 if ok_clicked:
     with open("jelszavak.txt", "a", encoding="UTF-8") as f:
         f.write(str("\n") + usege + str(":\n\t") + st.session_state.password)
-    ok_text=st.text("☑️ Jelszó elmentve!")
+    ok_text=st.success("☑️ Jelszó elmentve!")
 
 
 
