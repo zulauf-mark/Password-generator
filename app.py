@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 
-Users=["Márk","Mama","Henrik","Richard","Gábor"]
+Users=["Márk","Mama","Henrik","Richard","Gábor","Noémi"]
 numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
 u_letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
