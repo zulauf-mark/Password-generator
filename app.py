@@ -7,7 +7,7 @@ numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
 u_letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
 
-st.login("Felhasználónév:")
+
 login=st.text_input("Felhasználónév:")
 if(login not in Users):
     st.text("Nem megfelelő felhasználónevet adott meg!")
