@@ -62,4 +62,4 @@ if ok_clicked:
 
 # ---- DISPLAY PASSWORD ----
 if st.session_state.password:
-    st.text_area(f"Generált jelszó: **{st.session_state.password}**")
+    st.text(f"Generált jelszó: **{st.session_state.password}**")
