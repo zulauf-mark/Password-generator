@@ -96,7 +96,7 @@ else:
         saved_pw_list.append(st.session_state.password)
         json_str=json.dumps(saved_pw_list,ensure_ascii=False)
         streamlit_js_eval(
-            js_expressions=f"localStorage.setItem('{usege}', '{json_str}')")
+            js_expressions=f"localStorage.setItem('usege', '{json_str}')")
         st.success("☑️ Jelszó elmentve!")
 
 
