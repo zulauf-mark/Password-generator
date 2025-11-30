@@ -62,4 +62,4 @@ if ok_clicked:
 
 # ---- DISPLAY PASSWORD ----
 if st.session_state.password:
-    st.success(f"Generált jelszó: **{st.session_state.password}**")
+    st.dataframe(f"Generált jelszó: **{st.session_state.password}**")
