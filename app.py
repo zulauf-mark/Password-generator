@@ -94,7 +94,7 @@ else:
         with open("jelszavak.txt", "a", encoding="UTF-8") as f:
             f.write(str("\n") + usege + str(":\n\t") + st.session_state.password)
         saved_pw_list.append(st.session_state.password)
-        json_str=json.dump(saved_pw_list,ensure_ascii=False)
+        json_str=json.dumps(saved_pw_list,ensure_ascii=False)
         streamlit_js_eval(
             js_expressions=f"localStorage.setItem('passwords', '{json_str}')")
         st.success("☑️ Jelszó elmentve!")
