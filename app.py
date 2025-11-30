@@ -1,6 +1,8 @@
 import streamlit as st
 import random
 from streamlit_js_eval import streamlit_js_eval
+import json
+
 
 
 #reading existing value from browser
@@ -17,14 +19,17 @@ else:
     import json
     saved_pw_list = json.loads(saved_pw)
 
+#Mentett jelszavak kiírása
 st.write("Mentett jelszavak:", saved_pw_list)
 
 
+#Listák felvétele
 numbers = list(range(10))
 l_letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
 u_letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
 
 
+#Login
 login=st.text_input("Felhasználónév:")
 if(login not in Users):
     st.text("Nem megfelelő felhasználónevet adott meg!")
@@ -32,6 +37,7 @@ else:
     if (login == "Susu"):
         st.text("Nagyonn szeretlek Kicsim ❤️")
 
+    #A belépett felület
     st.title("🔐 Jelszó Generáló")
 
     usege = st.text_input("Mihez kell a jelszó?")
@@ -40,6 +46,7 @@ else:
     all_option = st.checkbox("Minden")
     use_numbers = use_lower = use_upper = all_option
 
+    #Választás a karakterekből
     if not all_option:
         use_numbers = st.checkbox("Számok")
         use_lower   = st.checkbox("Kisbetűk")
@@ -72,18 +79,23 @@ else:
     if "password" not in st.session_state:
         st.session_state.password = ""
 
+
+    #Jelszó generálás
     if generate_clicked:
         if len(all_lists) == 0:
             st.error("Válasszon ki legalább egy karaktertípust!")
         else:
             st.session_state.password = generate_password()
 
+
+    #Jelszó mentés
     if ok_clicked:
         with open("jelszavak.txt", "a", encoding="UTF-8") as f:
             f.write(str("\n") + usege + str(":\n\t") + st.session_state.password)
         saved_pw_list.append(st.session_state.password)
+        json_str=json.dump(saved_pw_list,ensure_ascii=False)
         streamlit_js_eval(
-            js_expressions=f"localStorage.setItem('passwords', '{saved_pw_list}')")
+            js_expressions=f"localStorage.setItem('passwords', '{json_str}')")
         st.success("☑️ Jelszó elmentve!")
 
 
