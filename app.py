@@ -56,7 +56,7 @@ if generate_clicked:
 if ok_clicked:
     with open("jelszavak.txt", "a", encoding="UTF-8") as f:
         f.write(str("\n") + usege + str(":\n\t") + st.session_state.password)
-    ok_text=st.success("☑️ Jelszó elmentve!")
+    st.success("☑️ Jelszó elmentve!")
 
 
 
